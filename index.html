@@ -1,0 +1,37 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Sigmar+One" rel="stylesheet">
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="settings.js" defer></script>
+  <script src="pomodoro.js" defer></script>
+  <script src="buttons.js" defer></script>
+
+  <!-- Color Scheme: https://coolors.co/f13a16-19a200-e8ebf7-27a6bc-0e3b43 -->
+  <!-- Font: fonts.google.com/?selection.family=Leckerli+One|Sigmar+One -->
+
+</head>
+
+<body>
+  <div class="row">
+    <h1>&#127813; Pomodoro &#127813;</h1>
+  </div>
+
+  <div class="web_app row">
+    <button class="app_btn btn_mode active" id="btn_work_time" value="work">Work Time</button>
+    <button class="app_btn btn_mode" id="btn_short_break" value="short_break">Short Break</button>
+    <button class="app_btn btn_mode" id="btn_long_break" value="long_break">Long Break</button>
+  </div>
+  <div class="web_app row">
+    <h3 id="time"> 00:00</h3>
+  </div>
+  <div class=" web_app row ">
+    <button class="app_btn btn_next" id="btn_next">Next</button>
+  </div>
+  <div class=" web_app row ">
+    <button class="app_btn" id="btn_start">Start</button>
+    <button class="app_btn" id="btn_pause">Pause</button>
+    <button class="app_btn" id="btn_reset">Reset</button>
+  </div>
+</body>

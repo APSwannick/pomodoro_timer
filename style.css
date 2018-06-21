@@ -1,0 +1,60 @@
+body {
+  font-size: 1rem;
+  font-family: 'Sigmar One', cursive;
+}
+
+h1 {
+  font-size: 3rem;
+  font-family: 'Leckerli One', cursive;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 8rem;
+  overflow-y: hidden;
+}
+
+body {
+  width: 100%;
+  max-width: 49rem;
+  margin: auto;
+  margin-top: 1rem;
+  text-align: center;
+  background-color: #E8EBF7;
+}
+
+.web_app {}
+
+.row {
+  margin: auto;
+  margin-top: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  border-color: rgba(0, 0, 0, .2);
+  border-width: 1px;
+  border-style: solid;
+}
+
+.app_btn {
+  background-color: #27A6BC;
+  border: none;
+  color: #E8EBF7;
+  height: 3rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+.app_btn:hover,
+.active {
+  background-color: #0E3B43;
+}
+
+.btn_mode {
+  width: 32%;
+}
+
+.btn_next {
+  width: 100%;
+  max-width: 20rem;
+}
