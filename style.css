@@ -29,11 +29,13 @@ button {
   outline: none;
 }
 
+/*
 .web_app {
   border-color: rgba(0, 0, 0, .2);
   border-width: 1px;
   border-style: solid;
 }
+*/
 
 .row {
   margin: auto;
@@ -69,16 +71,6 @@ button {
   max-width: 20rem;
 }
 
-.btn_menu {
-  background-color: F13A16;
-  color: black;
-  border: solid;
-  font-size: 1.5rem;
-  position: fixed;
-  top: 0;
-  right: 0;
-}
-
 .invisible {
   display: none;
 }
@@ -88,16 +80,27 @@ button {
   box-sizing: border-box;
   vertical-align: middle;
   background: transparent;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: #27A6BC;
+}
+
+.btn_menu {
+  line-height: 3.2rem;
+  font-size: 3.2rem;
+  border: none;
+  text-align: center;
 }
 
 .btn_play {
-  height: 3rem;
-  width: 3rem;
+  height: 4rem;
+  width: 4rem;
+  margin-left: 1.5rem;
   border-color: transparent transparent transparent #27A6BC;
   transition: 100ms all ease;
   /*will-change: border-width;*/
   border-style: solid;
-  border-width: 1.5rem 0 1.5rem 3rem;
+  border-width: 2rem 0 2rem 4rem;
 }
 
 .btn_pause {

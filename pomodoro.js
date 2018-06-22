@@ -2,7 +2,7 @@ var settings = {
   work: .125 * 60 * 1000, //In Minutes
   short_break: .25 * 60 * 1000, //In MInutes
   long_break: .5 * 60 * 1000, //in Minutes
-  tick_time: 300,
+  tick_time: 200,
   short_long_ratio: 2
 };
 //Global Variables
@@ -48,6 +48,7 @@ function tick_timer() {
 }
 
 function pause_timer() {
+  play_btn_state("play");
   if (timer_interval) {
     clearInterval(timer_interval);
     timer_interval = null;
@@ -62,6 +63,7 @@ function reset_timer() {
 
 function start_timer() {
   if (!timer_interval) {
+    play_btn_state("pause");
     timer_interval = setInterval(tick_timer, settings.tick_time);
   }
 }
@@ -80,8 +82,18 @@ function next_timer() {
   document.getElementById(button_id).click();
 }
 
+function play_btn_state(state) {
+  let elem = document.getElementById("btn_play");
+  if (state == "play") {
+    elem.className = elem.className.replace(" btn_pause", "");
+  } else {
+    this.className += " btn_pause";
+  }
+}
+
 function on_timer_end() {
   clearInterval(timer_interval);
+  play_btn_state("play")
 }
 
 (function assign_listeners() {
@@ -104,13 +116,13 @@ function on_timer_end() {
       }
     });
   }
+  /*
+    document.getElementById("btn_start")
+      .addEventListener("click", start_timer);
 
-  document.getElementById("btn_start")
-    .addEventListener("click", start_timer);
-
-  document.getElementById("btn_pause")
-    .addEventListener("click", pause_timer);
-
+    document.getElementById("btn_pause")
+      .addEventListener("click", pause_timer);
+  */
   document.getElementById("btn_reset")
     .addEventListener("click", reset_timer);
 
@@ -120,13 +132,12 @@ function on_timer_end() {
   document.getElementById("btn_play")
     .addEventListener("click", function () {
       if (this.className.includes("btn_pause")) {
-        this.className = this.className.replace(" btn_pause", "");
+        //this.className = this.className.replace(" btn_pause", "");
         pause_timer();
       } else {
         this.className += " btn_pause";
         start_timer();
       }
-      console.log(this.className);
     });
 
 
