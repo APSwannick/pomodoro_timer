@@ -10,6 +10,7 @@ h1 {
 }
 
 h3 {
+  font-size: 7rem;
   font-size: 24vmin;
   overflow-y: hidden;
 }
@@ -23,16 +24,23 @@ body {
   background-color: #E8EBF7;
 }
 
-.web_app {}
+button {
+  cursor: pointer;
+  outline: none;
+}
 
-.row {
-  margin: auto;
-  margin-top: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+.web_app {
   border-color: rgba(0, 0, 0, .2);
   border-width: 1px;
   border-style: solid;
+}
+
+.row {
+  margin: auto;
+  position: relative;
+  margin-top: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .app_btn {
@@ -43,6 +51,8 @@ body {
   text-align: center;
   display: inline-block;
   font-size: 1.2rem;
+  font-weight: bold;
+  box-sizing: border-box;
 }
 
 .app_btn:hover,
@@ -57,4 +67,94 @@ body {
 .btn_next {
   width: 100%;
   max-width: 20rem;
+}
+
+.btn_menu {
+  background-color: F13A16;
+  color: black;
+  border: solid;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.invisible {
+  display: none;
+}
+
+.css_btn {
+  padding: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  background: transparent;
+}
+
+.btn_play {
+  height: 3rem;
+  width: 3rem;
+  border-color: transparent transparent transparent #27A6BC;
+  transition: 100ms all ease;
+  /*will-change: border-width;*/
+  border-style: solid;
+  border-width: 1.5rem 0 1.5rem 3rem;
+}
+
+.btn_pause {
+  border-style: double;
+  border-width: 0 0 0 3rem;
+}
+
+.btn_reset {
+  width: 3rem;
+  height: 3rem;
+  border: .5rem solid;
+  border-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-color: #27A6BC;
+  border-bottom-color: #27A6BC;
+  border-left-color: #27A6BC;
+  border-right-color: transparent;
+  position: relative;
+}
+
+.btn_reset:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-width: .75rem .75rem 0 .75rem;
+  border-style: solid;
+  border-color: #27A6BC transparent transparent transparent;
+  position: absolute;
+  top: 0;
+  right: -.75rem;
+  transform: rotate(-45deg);
+}
+
+.btn_reset:active {
+  -webkit-animation: spin .5s linear infinite;
+  -moz-animation: spin .5s linear infinite;
+  animation: spin .5s linear infinite;
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
