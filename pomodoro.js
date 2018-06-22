@@ -37,8 +37,7 @@ function tick_timer() {
     timer_time = Date.now();
   }
   if (timer_curr <= 0) {
-    if (mode == "work") {}
-    clearInterval(timer_interval);
+    on_timer_end()
     return;
   }
   console.log(timer_curr);
@@ -81,13 +80,17 @@ function next_timer() {
   document.getElementById(button_id).click();
 }
 
+function on_timer_end() {
+  clearInterval(timer_interval);
+}
+
 (function assign_listeners() {
   //Switch Mode & Pause Timer & Set Timer
   var mode_btns = document.getElementsByClassName("btn_mode");
   for (var i = 0; i < mode_btns.length; i++) {
     mode_btns[i].addEventListener("click", function () {
       var active_elem = document.getElementsByClassName("active");
-      active_elem[0].className = active_elem[0].className.replace("active", "");
+      active_elem[0].className = active_elem[0].className.replace(" active", "");
       this.className += " active";
       mode = this.value;
       pause_timer();
@@ -113,6 +116,19 @@ function next_timer() {
 
   document.getElementById("btn_next")
     .addEventListener("click", next_timer);
+
+  document.getElementById("btn_play")
+    .addEventListener("click", function () {
+      if (this.className.includes("btn_pause")) {
+        this.className = this.className.replace(" btn_pause", "");
+        pause_timer();
+      } else {
+        this.className += " btn_pause";
+        start_timer();
+      }
+      console.log(this.className);
+    });
+
 
 }());
 
