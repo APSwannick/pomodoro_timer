@@ -83,8 +83,6 @@ function set_timer(time) {
   }
 }
 
-
-
 function tick_timer() {
 
   if (!timer_time) {
