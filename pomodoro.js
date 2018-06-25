@@ -74,9 +74,12 @@ function set_timer(time) {
     timer_curr = time;
   }
   time_elem.innerHTML = time_string(timer_curr);
-  console.log(timer_interval);
   if (timer_interval) {
-    document.title = time_string(timer_curr);
+    if (mode == "work") {
+      document.title = 'Work - ' + time_string(timer_curr);
+    } else {
+      document.title = 'Break - ' + time_string(timer_curr);
+    }
   }
 }
 
