@@ -4,7 +4,8 @@ var settings = {
   long_break: 10 * 60000, //in Minutes
   tick_time: 200,
   short_long_ratio: 4,
-  sound: Boolean(true)
+  sound: Boolean(true),
+  sound_effect: "end_videogame.wav"
 };
 //Global Variables
 var mode = "work",
@@ -47,6 +48,12 @@ var mode = "work",
 
   document.getElementById("btn_test_sound")
     .addEventListener("click", play_sound);
+
+  document.getElementById("dd_sound_effect").onchange = function () {
+    let curr_val = this.options[this.selectedIndex].value;
+    settings.sound_effect = curr_val;
+    document.getElementById("btn_work_time").click();
+  }
 }());
 
 function time_string(time) {
@@ -83,7 +90,6 @@ function tick_timer() {
     on_timer_end()
     return;
   }
-  console.log(timer_curr);
   timer_curr -= Date.now() - timer_time;
   timer_time = Date.now();
 
@@ -135,7 +141,7 @@ function play_btn_state(state) {
 }
 
 function play_sound() {
-  var audio = new Audio('end_telephone.mp3');
+  var audio = new Audio(settings.sound_effect);
   audio.play();
 }
 
