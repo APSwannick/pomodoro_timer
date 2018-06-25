@@ -31,7 +31,7 @@ body {
 
 button {
   cursor: pointer;
-  outline: none;
+  outline: none !important;
 }
 
 .row {
