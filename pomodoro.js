@@ -1,9 +1,10 @@
 var settings = {
-  work: .125 * 60 * 1000, //In Minutes
-  short_break: .25 * 60 * 1000, //In MInutes
-  long_break: .5 * 60 * 1000, //in Minutes
+  work: 25 * 60000, //In Minutes
+  short_break: 5 * 60000, //In MInutes
+  long_break: 10 * 60000, //in Minutes
   tick_time: 200,
-  short_long_ratio: 2
+  short_long_ratio: 4,
+  sound: Boolean(true)
 };
 //Global Variables
 var mode = "work",
@@ -11,6 +12,42 @@ var mode = "work",
   timer_interval,
   timer_curr = settings.work,
   timer_time;
+
+
+(function settings_menu() {
+  document.getElementById("btn_open_settings")
+    .addEventListener("click", function () {
+      document.getElementById('menu').style.display = 'block';
+    });
+
+  document.getElementById("btn_close_settings")
+    .addEventListener("click", function () {
+      document.getElementById('menu').style.display = 'none';
+    });
+
+  document.getElementById("dd_timer_work").onchange = function () {
+    let curr_val = this.options[this.selectedIndex].value;
+    settings.work = curr_val;
+    document.getElementById("btn_work_time").click();
+  }
+  document.getElementById("dd_timer_short").onchange = function () {
+    let curr_val = this.options[this.selectedIndex].value;
+    settings.short_break = curr_val;
+    document.getElementById("btn_work_time").click();
+  }
+  document.getElementById("dd_timer_long").onchange = function () {
+    let curr_val = this.options[this.selectedIndex].value;
+    settings.long_break = curr_val;
+    document.getElementById("btn_work_time").click();
+  }
+  document.getElementById("cb_sound")
+    .addEventListener("click", function () {
+      settings.sound = !settings.sound;
+    });
+
+  document.getElementById("btn_test_sound")
+    .addEventListener("click", play_sound);
+}());
 
 function time_string(time) {
   time /= 1000; //For Milliseconds
@@ -30,10 +67,16 @@ function set_timer(time) {
     timer_curr = time;
   }
   time_elem.innerHTML = time_string(timer_curr);
+  document.title = '\u{1F345}' + time_string(timer_curr);
+
 }
 
+
+
 function tick_timer() {
+
   if (!timer_time) {
+
     timer_time = Date.now();
   }
   if (timer_curr <= 0) {
@@ -91,9 +134,17 @@ function play_btn_state(state) {
   }
 }
 
+function play_sound() {
+  var audio = new Audio('end_telephone.mp3');
+  audio.play();
+}
+
 function on_timer_end() {
   clearInterval(timer_interval);
   play_btn_state("play")
+  if (settings.sound == true) {
+    play_sound();
+  }
 }
 
 (function assign_listeners() {
@@ -112,17 +163,10 @@ function on_timer_end() {
         work_count += 1;
         btn_next_elem.innerHTML = "Take A Breath";
       } else {
-        btn_next_elem.innerHTML = "Back To The Grind";
+        btn_next_elem.innerHTML = "TIme To Focus";
       }
     });
   }
-  /*
-    document.getElementById("btn_start")
-      .addEventListener("click", start_timer);
-
-    document.getElementById("btn_pause")
-      .addEventListener("click", pause_timer);
-  */
   document.getElementById("btn_reset")
     .addEventListener("click", reset_timer);
 
@@ -139,9 +183,6 @@ function on_timer_end() {
         start_timer();
       }
     });
-
-
 }());
-
 
 document.getElementById("btn_work_time").click();

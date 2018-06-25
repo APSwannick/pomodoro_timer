@@ -1,15 +1,15 @@
 <head>
+  <link rel="shortcut icon" type="image/png" href="/assets/images/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Sigmar+One" rel="stylesheet">
   <link rel="stylesheet" href="reset.css" />
   <link rel="stylesheet" href="style.css" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="settings.js" defer></script>
   <script src="pomodoro.js" defer></script>
-  <script src="buttons.js" defer></script>
 
   <!-- Color Scheme: https://coolors.co/f13a16-19a200-e8ebf7-27a6bc-0e3b43 -->
   <!-- Font: fonts.google.com/?selection.family=Leckerli+One|Sigmar+One -->
+  <title>&#127813; Pomodoro</title>
 
 </head>
 
@@ -30,18 +30,64 @@
 
 
   <div class=" web_app row ">
-    <button class="css_btn btn_menu">&#9776;</button>
+    <button class="css_btn btn_menu" id="btn_open_settings">&#9776;</button>
     <button class="css_btn btn_play" id="btn_play"></button>
     <button class="css_btn btn_reset" id="btn_reset"></button>
   </div>
   <div class=" web_app row ">
     <button class="app_btn btn_next" id="btn_next">Take A Breath</button>
   </div>
+
+  <div id="menu" class="web_app modal ">
+    <div class="menu">
+      <header class="row">
+        <button class="css_btn close" id="btn_close_settings">&times;</button>
+        <h1>
+          <span class="optional">&#127813;</span>
+          Settings
+          <span class="optional ">&#127813;</span>
+        </h1>
+      </header>
+      <div class="row ">
+        <p class="setting ">Work Timer:
+          <select id="dd_timer_work" class="dropdown ">
+            <option value="900000 ">15 Minutes</option>
+            <option value="1200000 ">20 Minutes</option>
+            <option value="1500000 " selected>25 Minutes</option>
+            <option value="1800000 ">30 Minutes</option>
+          </select>
+        </p>
+        <p class="setting ">Short Break:
+          <select id="dd_timer_short" class="dropdown ">
+            <option value="240000 ">4 Minutes</option>
+            <option value="300000 " selected>5 Minutes</option>
+            <option value="360000 ">6 Minutes</option>
+          </select>
+        </p>
+        <p class="setting ">Long Break:
+          <select id="dd_timer_long" class="dropdown ">
+            <option value="300000 ">5 Minutes</option>
+            <option value="600000 " selected>10 Minutes</option>
+            <option value="900000 ">15 Minutes</option>
+            <option value="1200000 ">20 Minutes</option>
+          </select>
+        </p>
+        <div class="row ">
+          <label class="setting ">
+            Sound:
+            <input type='checkbox' id="cb_sound" checked>
+          </label>
+          <button class="app_btn setting " id="btn_test_sound" value="long_break ">Sound Test</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!--
   <div class=" web_app row ">
-    <button class="app_btn" id="btn_start">Start</button>
-    <button class="app_btn" id="btn_pause">Pause</button>
-    <button class="app_btn" id="btn_rest">Reset</button>
+    <button class="app_btn " id="btn_start ">Start</button>
+    <button class="app_btn " id="btn_pause ">Pause</button>
+    <button class="app_btn " id="btn_rest ">Reset</button>
   </div>
    -->
 </body>
