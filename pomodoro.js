@@ -67,7 +67,7 @@ function set_timer(time) {
     timer_curr = time;
   }
   time_elem.innerHTML = time_string(timer_curr);
-  document.title = '\u{1F345}' + time_string(timer_curr);
+  document.title = time_string(timer_curr);
 
 }
 
